@@ -1,0 +1,376 @@
+{
+  "lookback_days": 3,
+  "min_score": 8,
+  "max_items_per_category": 8,
+  "top_stories": 3,
+  "max_linkedin_items": 6,
+  "dedupe_memory_days": 7,
+  "max_per_brand": 1,
+  "request_timeout_seconds": 20,
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+  "google_news_queries": [
+    "EV OR \"electric vehicle\" \"on-board charger\" OR \"onboard charger\" OR \"traction inverter\" OR \"e-axle\" OR \"e-drive\" when:7d",
+    "\"power module\" EV OR automotive OR inverter OR charger when:7d",
+    "automotive SiC OR GaN inverter OR \"on-board charger\" OR powertrain when:7d",
+    "Infineon OR onsemi OR Wolfspeed OR ROHM OR Semikron OR Vincotech OR \"Mitsubishi Electric\" OR \"Fuji Electric\" \"power module\" when:7d",
+    "\"AMB substrate\" OR \"active metal brazing\" OR \"silicon nitride substrate\" OR \"DCB substrate\" OR \"direct copper bonding\" when:10d",
+    "curamik OR Ferrotec OR \"NGK Insulators\" OR \"Toshiba Materials\" OR Denka OR Maruwa OR CeramTec OR CoorsTek substrate when:14d",
+    "\"bonding wire\" OR \"sinter paste\" OR \"silver sintering\" OR \"die-attach\" OR \"solder preform\" semiconductor OR power when:14d",
+    "Heraeus OR \"Indium Corporation\" OR Henkel OR Kymera OR \"Nihon Superior\" OR Tanaka solder OR sintering OR \"bonding wire\" when:14d",
+    "\"on-board charger\" OR \"onboard charger\" when:7d",
+    "site:linkedin.com power module OR SiC OR GaN OR \"power electronics\" OR substrate OR inverter OR \"on-board charger\""
+  ],
+  "direct_feeds": [
+    {
+      "name": "electrive",
+      "url": "https://www.electrive.com/feed/"
+    },
+    {
+      "name": "Electronics Weekly",
+      "url": "https://www.electronicsweekly.com/feed/"
+    }
+  ],
+  "exclude_domains": [
+    "sciencedaily.com",
+    "phys.org",
+    "nature.com",
+    "sciencedirect.com",
+    "mdpi.com",
+    "ieee.org",
+    "ieeexplore.org",
+    "springer.com",
+    "link.springer.com",
+    "onlinelibrary.wiley.com",
+    "pubs.acs.org",
+    "arxiv.org",
+    "researchgate.net",
+    "frontiersin.org",
+    "dl.acm.org",
+    "science.org",
+    "cell.com",
+    "thelancet.com",
+    "pnas.org",
+    "journals.sagepub.com",
+    "tandfonline.com",
+    "worldscientific.com",
+    "newsroom.epfl.ch",
+    "eurekalert.org"
+  ],
+  "research_title_patterns": [
+    "\\bstudy\\b",
+    "\\bstudies\\b",
+    "\\bresearchers\\b",
+    "\\bresearch paper\\b",
+    "\\buniversity\\b",
+    "\\binstitute of technology\\b",
+    "\\bprofessor\\b",
+    "\\bjournal\\b",
+    "\\bpaper (describes|demonstrates|proposes|presents)\\b",
+    "\\bPhD\\b",
+    "\\bstudents\\b",
+    "\\bpublication in\\b"
+  ],
+  "global_penalty_patterns": [
+    [
+      "market.{0,55}(growth|outlook|size|forecast|report|analysis|research|strategic|to reach)|market (size|share) (to|of)|CAGR|Fact\\.?MR|openPR\\.com|Research and Markets|GlobalInfoResearch|MarketWatch\\b|market data forecast",
+      -30
+    ],
+    [
+      "supply(ing)? \\d[\\d,]*\\s+(electric\\s+)?(cars|vehicles|buses|trucks|units)|(order|deal) (for|worth) \\$?\\d|\\b\\d{2,4},\\d{3}\\s+(electric\\s+)?(cars|vehicles|buses)",
+      -30
+    ],
+    [
+      "\\b(quarterly|earnings|revenue|market share|deliveries|price cut|recall(s|ed)?|layoffs?|strike|IPO)\\b",
+      -9
+    ],
+    [
+      "interview with .{0,35}?\\b(ceo|cto|cfo|founder|vp)\\b",
+      -15
+    ]
+  ],
+  "flood_brands": [
+    "Navitas",
+    "Infineon",
+    "Wolfspeed",
+    "onsemi",
+    "ROHM",
+    "STMicroelectronics",
+    "Nexperia",
+    "Vishay",
+    "Mitsubishi Electric",
+    "Fuji Electric",
+    "Toshiba",
+    "Denka",
+    "NGK",
+    "Rogers",
+    "Ferrotec",
+    "Curamik",
+    "Heraeus",
+    "Indium",
+    "Henkel",
+    "Texas Instruments",
+    "\\bTI\\b",
+    "Tesla",
+    "BYD",
+    "Volkswagen",
+    "BMW",
+    "Mercedes",
+    "Hyundai",
+    "Kia",
+    "VinFast",
+    "Stellantis",
+    "Renault",
+    "Volvo",
+    "Porsche",
+    "Audi",
+    "NIO",
+    "XPeng",
+    "Toyota",
+    "Honda",
+    "Nissan",
+    "Ford",
+    "GM\\b",
+    "Semikron",
+    "Danfoss",
+    "Bosch",
+    "ZF\\b",
+    "Hitachi",
+    "Mouser",
+    "DigiKey",
+    "Zenergize",
+    "Borgwarner",
+    "\\bBorgWarner\\b",
+    "ZF Friedrichshafen"
+  ],
+  "categories": [
+    {
+      "id": "ev_obc",
+      "name": "EV & On-Board Charger Module Technology",
+      "icon": "🚗",
+      "priority": 1.3,
+      "lookback_days": 5,
+      "max_items": 10,
+      "sort": "latest",
+      "keywords": [
+        [
+          "on[- ]?board charger|onboard charger|\\bOBC\\b|bidirectional (on[- ]?board )?charger|integrated charger",
+          13,
+          "OBC"
+        ],
+        [
+          "traction inverter|main inverter|drive inverter",
+          12,
+          "traction inverter"
+        ],
+        [
+          "e[- ]?axle|e[- ]?drive|electric drive unit|\\bEDU\\b|e[- ]?motor",
+          11,
+          "e-drive"
+        ],
+        [
+          "800[- ]?volt|800\\s?V\\b|high[- ]voltage (platform|architecture|battery)",
+          9,
+          "800 V"
+        ],
+        [
+          "\\bV2G\\b|vehicle[- ]to[- ]grid|vehicle[- ]to[- ]load|\\bV2L\\b|bidirectional charging|DC[- ]fast[- ]charg(ing|er)|\\bDCFC\\b",
+          8,
+          "charging tech"
+        ],
+        [
+          "charging (station|infrastructure|network|points?)|chargers? (installed|planned|added)",
+          -4,
+          "charging infra"
+        ],
+        [
+          "\\bEVs?\\b|\\bBEVs?\\b|electric vehicle|electric car|battery[- ]electric|\\bxEV\\b|\\bHEV\\b|\\bPHEV\\b",
+          6,
+          "EV"
+        ],
+        [
+          "(SiC|GaN|silicon carbide) (inverter|MOSFET|module|based|power)|inverter (with|using|based on) SiC",
+          8,
+          "SiC/GaN in EV"
+        ],
+        [
+          "(IGBT|SiC|GaN|MOSFET|diode)[a-z ]{0,25}\\b(EV|electric vehicle|electric car|automotive|vehicle|auxiliary)",
+          9,
+          "EV power semi"
+        ],
+        [
+          "powertrain (electrification|electronics|module)|electric powertrain|ev powertrain",
+          8,
+          "powertrain"
+        ],
+        [
+          "battery (pack|swap|management|technology)|solid[- ]state battery|cell[- ]to[- ](pack|car|chassis)",
+          4,
+          "battery"
+        ],
+        [
+          "PM E-?DRIVE|\\bFAME\\b|subsid(y|ies)|tender|\\bYoY\\b|\\bsales\\b (jump|growth|rise|fall)",
+          -99,
+          "off-topic"
+        ]
+      ]
+    },
+    {
+      "id": "packaging",
+      "name": "Power Module Packaging & Efficiency",
+      "icon": "🔌",
+      "priority": 1.15,
+      "lookback_days": 10,
+      "max_items": 8,
+      "sort": "score",
+      "keywords": [
+        [
+          "(IGBT|SiC|GaN|MOSFET|power) module[s]?",
+          10,
+          "power module"
+        ],
+        [
+          "silver sinter(ing|ed)|sintered silver|sinter die[- ]attach|pressure[- ]assisted sintering",
+          7,
+          "sintering"
+        ],
+        [
+          "double[- ]sided cool(ed|ing)|direct (cooled|cooling)|pin[- ]fin|planar (bonding|module|package)|chip embed(ded|ding)|embedded die",
+          8,
+          "advanced packaging"
+        ],
+        [
+          "wire bond(ing|s)?|ribbon bond|copper clip|top[- ]side (sinter|bond)",
+          6,
+          "interconnect"
+        ],
+        [
+          "transfer mold(ing|ed)|encapsulat(e|ion|ed)",
+          5,
+          "molding"
+        ],
+        [
+          "junction temperature|thermal (impedance|resistance|cycling)|power cycling|power density|switching (loss|frequency)|\\bRth\\b|efficiency (gains?|improvements?|of [0-9])",
+          5,
+          "efficiency"
+        ],
+        [
+          "Infineon|onsemi|Wolfspeed|\\bROHM\\b|Semikron|Danfoss|Vincotech|Nexperia|Vishay|Mitsubishi Electric|Fuji Electric|Toshiba(?! Materials)|STMicroelectronics|Microchip|Navitas|Bosch|Hitachi(?! Metals)|Delta Electronics|Littelfuse|\\bIXYS\\b|Basler|\\bBorgWarner\\b|ZF\\b|Vitesco|Sensata",
+          5,
+          "module maker"
+        ],
+        [
+          "\\bEconoDUAL\\b|\\bXHP\\b|\\bSKiM\\b|\\bSKaiL\\b|62mm module|six[- ]pack|\\bprimePACK\\b|\\bHPDrive\\b|\\bEasyDUAL\\b|\\bDIP\\b",
+          7,
+          "platform"
+        ],
+        [
+          "Coyote|\\bV8\\b|KARNO|Linux|graphics driver|Windows behavior|engine (block|bay)|solar module|photovoltaic module|battery module|\\bBMS\\b|fuel cell|\\bsales\\b|\\bYoY\\b|deliveries|registrations|\\bCAGR\\b",
+          -99,
+          "off-topic"
+        ]
+      ]
+    },
+    {
+      "id": "materials",
+      "name": "Packaging Materials: Substrates, Wires, Solder & Sinter Pastes",
+      "icon": "🧱",
+      "priority": 1.0,
+      "lookback_days": 14,
+      "max_items": 8,
+      "sort": "score",
+      "keywords": [
+        [
+          "AMB substrate|active[- ]metal brazing|active metal brazed|\\bAMB\\b",
+          13,
+          "AMB"
+        ],
+        [
+          "DCB substrate|direct copper bond(ed|ing)|direct bonded copper|\\bDCB\\b",
+          13,
+          "DCB"
+        ],
+        [
+          "silicon nitride (substrate|ceramic)|Si3N4 substrate|SiN substrate|silicon[- ]nitride substrate",
+          12,
+          "Si₃N₄"
+        ],
+        [
+          "silicon nitride|Si3N4",
+          6,
+          "Si₃N₄"
+        ],
+        [
+          "direct plated copper|\\bDPC\\b|thick[- ]film copper|\\bAMC\\b substrate",
+          8,
+          "DPC"
+        ],
+        [
+          "ceramic substrate|power electronics substrate|substrate (for|in) power (module|electronics)|power module substrate",
+          9,
+          "ceramic substrate"
+        ],
+        [
+          "aluminium nitride|aluminum nitride|AlN substrate|alumina substrate|Al2O3 substrate",
+          8,
+          "AlN/Al₂O₃"
+        ],
+        [
+          "curamik|Rogers (Corporation|Industrial)|Ferrotec|NGK (Insulators|Spark Plug)|Toshiba Materials|\\bDenka\\b|Maruwa|CeramTec|CoorsTek|\\bKCC\\b|Zibo|Sinye",
+          8,
+          "substrate maker"
+        ],
+        [
+          "bonding wire|bond wire|heavy (aluminium|aluminum|copper) (bonding )?wire|ribbon (bond|wire)|palladium[- ]coated copper|\\bPCC\\b wire",
+          12,
+          "bonding wire"
+        ],
+        [
+          "Heraeus|Tanaka (Precious|Kikinzoku)?|Mitsubishi Materials|MK Electron|Nippon Micrometal|Kangqiang|Doublink",
+          7,
+          "wire/material maker"
+        ],
+        [
+          "solder (paste|preform|wire|ball|joint)|sinter (paste|silver)|sintering paste|silver sinter|copper sinter|die[- ]attach (paste|solder|material|film|technology)|die attach film|no[- ]solder",
+          14,
+          "solder/sinter"
+        ],
+        [
+          "Indium Corporation|Henkel|(MacDermid )?Alpha|Kymera|Nihon Superior|Senju|AIM Solder|Balver Zinn",
+          7,
+          "solder/sinter maker"
+        ],
+        [
+          "thermal interface materials?|molding compound|encapsulan(t|ts)|lead[- ]?frame|copper clip|busbar",
+          6,
+          "materials"
+        ],
+        [
+          "Chomerics|Bergquist|Laird|Mitsui High[- ]tec|Shinko|HAESUNG|Sumitomo Bakelite|\\bNitto\\b|\\bDow\\b|Shin[- ]Etsu",
+          6,
+          "materials maker"
+        ],
+        [
+          "deposition|3D NAND|\\bNAND\\b|\\bDRAM\\b|etch(ing|er)?|sputter(ing)?|photonic|sapphire wafer|\\bLED\\b|epitaxial wafer|\\bPV\\b|solar (module|cell|panel)|semiconductor wafer fab|(gallium|germanium) (supply|mining|production|refining)|mining\\b|ore body|rare earth|\\bDAF\\b (truck|racing)|\\bTim\\b\\b",
+          -99,
+          "off-topic"
+        ]
+      ]
+    }
+  ],
+  "linkedin": {
+    "enabled": true,
+    "posts_file": "data/linkedin_posts.json",
+    "scroll_times": 15,
+    "delay_seconds": [
+      2.5,
+      6.0
+    ]
+  },
+  "llm_summary": {
+    "enabled": false,
+    "api_base": "https://api.openai.com/v1",
+    "model": "gpt-4o-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "max_items": 12
+  }
+}
